@@ -11,12 +11,11 @@ import android.support.v4.media.session.MediaSessionCompat
 import androidx.annotation.CallSuper
 import androidx.core.content.ContextCompat
 import androidx.media.AudioAttributesCompat
-import androidx.media.AudioAttributesCompat.CONTENT_TYPE_MUSIC
 import androidx.media.AudioAttributesCompat.USAGE_MEDIA
 import androidx.media.AudioFocusRequestCompat
 import androidx.media.AudioManagerCompat
 import androidx.media.AudioManagerCompat.AUDIOFOCUS_GAIN
-import androidx.media.AudioManagerCompat.AUDIOFOCUS_GAIN_TRANSIENT
+import androidx.media.AudioManagerCompat.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK
 import com.doublesymmetry.kotlinaudio.event.EventHolder
 import com.doublesymmetry.kotlinaudio.event.NotificationEventHolder
 import com.doublesymmetry.kotlinaudio.event.PlayerEventHolder
@@ -537,7 +536,7 @@ abstract class BaseAudioPlayer internal constructor(
 
         val manager = ContextCompat.getSystemService(context, AudioManager::class.java)
 
-        focus = AudioFocusRequestCompat.Builder(AUDIOFOCUS_GAIN_TRANSIENT)
+        focus = AudioFocusRequestCompat.Builder(AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
             .setOnAudioFocusChangeListener(this)
             .setAudioAttributes(
                 AudioAttributesCompat.Builder()
